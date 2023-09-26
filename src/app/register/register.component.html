@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card p-3">
+                <header class="card-header border-0">
+                    <h4 class="card-title mt-2 text-center">Sign Up</h4>
+
+                </header>
+                <div class="toast-container position-fixed top-0 end-0 p-3">
+
+                </div>
+                <article class="card-body text-center">
+                    <div *ngIf="statuc">
+                        <h1>{{message}}</h1>
+                        
+                    </div>
+                    <form [formGroup]="registerform" (ngSubmit)="proceedToRegister()" *ngIf="!statuc">
+                        <div class="form-group mb-1">
+                            <input type="text" formControlName="username" class="form-control" placeholder="Name" id="name"
+                                required  />
+                        </div>
+                        <div class="form-group mb-1">
+                            <input type="email" formControlName="email" class="form-control" id="email"
+                                placeholder="Email address" required  />
+                            <span id="Email"></span>
+                        </div>
+                        <div class="form-group mb-1">
+                            <input type="text" formControlName="phone" class="form-control" id="phoneNumber"
+                                placeholder="Phone Number" required  />
+                            <span id="number"></span>
+                        </div>
+                        <div class="form-group mb-1">
+                            <input type="password" formControlName="password" class="form-control" id="password"
+                                placeholder="Password" required />
+                            <span id="Password"></span>
+                        </div>
+                        <div class="form-group mt-2" style="
+                width: auto;
+                display: block;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              ">
+                            <button type="submit" id="register" class="btn btn-primary btn-block text-black"
+                                style="width: auto;  " >
+                                Register
+                            </button>
+
+                        </div>
+                        <a routerLink="">login now!!!</a>
+                    </form>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
