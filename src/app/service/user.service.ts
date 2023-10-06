@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as moment from "moment";
 import { JwtService } from '../servicejwt/jwt.service';
 import { Observable } from 'rxjs';
 
@@ -14,12 +13,12 @@ result:any;
 sharedData: any ;
 param = {
     header: "Name,Email,Message,Message1,Message2,Message3,Message4",
-    URL: "https://docs.google.com/spreadsheets/d/1bfVMAiwIzBKwEDOeGShxoXDiGiz2IHO7Mj1nWHO4Qj8",
+    URL: "https://docs.google.com/spreadsheets/d/1bfVMAiwIzBKwEDOeGShxoXDiGiz2IHO7Mj1nWHO4Qj8/edit",
     SheetName: "Test2",
     Name: "Vishnu",
     Email: "vishnu@1233@gmail.com",
     message: "test",
-    Message1 : "1 My kiddo",
+    Message1 : "1 My kiddo", 
     Message2 : "1 My kiddo",
     Message3 : "1 My kiddo",
     Message4 : "1 My kiddo"
@@ -69,7 +68,7 @@ param = {
   }
   searchUserData(searchString: string){
     this.data={searchdata:searchString};
-    // console.log(this.data);
+    
     this.sharedData = this.http.post('http://localhost:3001/angular/search',this.data)
     return this.sharedData;
   }
@@ -88,37 +87,25 @@ param = {
     return this.http.post(`http://localhost:3001/angular/profileupload?id=${sessiondata.username}`,formData);
   }
   
-  check() {
+ check() {
     console.log("param:",this.param);
    const  option = {method:'POST',mode:'no-cors',headers: {
       'Content-Type': 'application/json'
     },body: JSON.stringify(this.param )}
     const data = JSON.stringify(this.param);
     console.log("param:",option);
-    const url = `https://script.google.com/macros/s/AKfycbyaOGHJCbuRgzVHtroBc2x3kwBKr6GXPBa5GtH26iZdYIwSabqyd6JOG6zKwLcl0Kybng/exec?${data}`;
-   fetch(url,{method:'POST',mode:'no-cors',headers: {
+    const url = `https://script.google.com/macros/s/AKfycbw653skfboOKBA5807YsiDH9uxO5aPIZHSFQaIoCFYYsaeNyJFsLRTwMP_os2XzmTDAxA/exec?${data}`;
+  fetch(url,{method:'POST',mode:'no-cors',headers: {
     'Content-Type': 'application/json', // Set the content type to JSON
   },body:JSON.stringify(this.param)})
+  //.then(response => response.json())
   .then(result=>{
-    console.log("bhbbk",result);
+
+    console.log("bhbbk",result.body);
     return result;
   }).catch(err=>{
-    console.log(err.message)
+    console.log(err)
   });
-  
-      // const parameter = {
-      //   parameter:{
-      //     header: "name,Email,Message",
-      //     URL: "https://docs.google.com/spreadsheets/d/1bfVMAiwIzBKwEDOeGShxoXDiGiz2IHO7Mj1nWHO4Qj8/edit#gid=0",
-      //     SheetName: "Test2",
-      //     Name: "Vishnu",
-      //     Email: "vishnu@1233@gmail.com",
-      //     message: "test"
-      //   }
-        
-      // }
-     // return this.http.post(`https://script.google.com/macros/s/AKfycby4R0xIFOlbo0PBVyh3d7AyZtaw2mtvdilWqlhPQKPEZVyGGcatAdyjeBrSpDrNJcMswA/exec?URL=https://docs.google.com/spreadsheets/d/1bfVMAiwIzBKwEDOeGShxoXDiGiz2IHO7Mj1nWHO4Qj8/edit%23gid=0&SheetName=Test1&Name=vishnu&Email=slj@gmail.com&Message=msghi&header=Name,Email,Message,Timestamp&Timestamp==today()`,parameter);
-
   }
 
 }
