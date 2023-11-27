@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:"admin/adduser",component:AdduserComponent, canActivate: mapToCanActivate([AuthService])},
   {path:"admin/edit-user",component:EditUserComponent, canActivate: mapToCanActivate([AuthService])},
   {path:"user",component:UserHomeComponent,canActivate: mapToCanActivate([UserAuthService])},
-  {path:"user/profile",component:UserProfileComponent,canActivate: mapToCanActivate([UserAuthService])},
+  {path:"user/profile",component:UserProfileComponent},
 ];
 
 @NgModule({
