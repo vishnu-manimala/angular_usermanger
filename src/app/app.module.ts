@@ -22,8 +22,8 @@ import { UserProfileComponent } from './user-home/user-profile/user-profile.comp
 import { MyInterceptorInterceptor } from './ineterceptors/my-interceptor.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, metaReducers } from './reducers';
 import { userDataManager } from './service/store/user.reducer';
+import { userReducer } from './Store/user.reducer';
 
 
 
@@ -51,10 +51,7 @@ import { userDataManager } from './service/store/user.reducer';
     JwtModule,
     StoreModule.forRoot({ userdata: userDataManager}),
     EffectsModule.forRoot([]),
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
-    
+    StoreModule.forRoot(userReducer)
   ],
   providers: [
   //   {
