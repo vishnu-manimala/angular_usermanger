@@ -13,10 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 connect();
 
 //routes
-app.get("/",(req,res)=>{
-    
-   res.send("hii")
-})
+app.post("/",require('./roueter/router'));
 
 app.listen(3000, () => {
   console.log(`server running at http://localhost:3000`);
